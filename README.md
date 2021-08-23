@@ -1,2 +1,3 @@
-# rivermen-website
+# Rivermen
+
 website project for rivermen
