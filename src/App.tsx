@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HashRouter, Switch, Route, useLocation } from 'react-router-dom';
 import { QueryClientProvider } from 'react-query';
-import { globalStore } from 'rekv';
+// import { globalStore } from 'rekv';
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 
 import Home from './pages/home';
