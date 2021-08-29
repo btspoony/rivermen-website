@@ -20,7 +20,7 @@ import WalletConnectProvider from '@walletconnect/web3-provider';
 import { globalStore } from 'rekv';
 import Web3Modal from 'web3modal';
 import { useHistory } from 'react-router-dom';
-import { ChevronDownIcon } from '@chakra-ui/icons';
+// import { ChevronDownIcon } from '@chakra-ui/icons';
 // import Fortmatic from "fortmatic";
 // import Torus from "@toruslabs/torus-embed";
 // import Authereum from "authereum";
@@ -128,7 +128,7 @@ export default function Web3Com({ variant }: Web3Props) {
       try {
         const profile = await getProfile(address);
         if (profile) {
-          globalStore.setState({ profile });
+          // globalStore.setState({ profile });
         }
       } catch (error) {
         reject(error);
@@ -331,7 +331,7 @@ export default function Web3Com({ variant }: Web3Props) {
                   </Text>
                 </Box>
               )}
-              <Box
+              {/* <Box
                 pos="absolute"
                 w={{ base: '36px', md: '44px', lg: '48px' }}
                 h={{ base: '36px', md: '44px', lg: '48px' }}
@@ -341,22 +341,7 @@ export default function Web3Com({ variant }: Web3Props) {
                 {getProfileImageUrl() ? (
                   <Image borderRadius="full" src={getProfileImageUrl()} />
                 ) : null}
-              </Box>
-              {isOpen ? (
-                ''
-              ) : (
-                <Box
-                  pos="absolute"
-                  bottom={{ base: '-4px', md: '-8px', lg: '-12px' }}
-                  right={0}
-                  w={{ base: '36px', md: '44px', lg: '48px' }}
-                  h={{ base: '22px', md: '26px', lg: '28px' }}
-                  background="rgba(255, 255, 255, 0.75)"
-                  borderRadius="25px 25px 0 0"
-                >
-                  <ChevronDownIcon w="24px" height="24px" />
-                </Box>
-              )}
+              </Box> */}
             </MenuButton>
             <MenuList
               fontSize={{ base: 12, md: 16 }}
@@ -432,14 +417,14 @@ export default function Web3Com({ variant }: Web3Props) {
                 color="textPrimary"
                 position="relative"
               >
-                <Box w="24px">
+                {/* <Box w="24px">
                   {getProfileImageUrl() ? (
                     <Image borderRadius="full" src={getProfileImageUrl()} />
                   ) : (
                     <Jazzicon address={curAddress} />
                   )}
-                </Box>
-                {profile && profile.name ? (
+                </Box> */}
+                {/* {profile && profile.name ? (
                   <Box>
                     <Text as="span" color={colors.textTips} pr={3}>
                       {getNetworkName()}
@@ -452,23 +437,14 @@ export default function Web3Com({ variant }: Web3Props) {
                     <Text marginY="-4px">{ellipseAddress(curAddress, 4)}</Text>
                     <Text>{getNetworkName()}</Text>
                   </Box>
-                )}
+                )} */}
 
-                {isOpen ? (
-                  ''
-                ) : (
-                  <Box
-                    pos="absolute"
-                    bottom="27px"
-                    right="13px"
-                    w="22px"
-                    h="12px"
-                    background="rgba(255, 255, 255, 0.75)"
-                    borderRadius="10px 10px 0 0"
-                  >
-                    <ChevronDownIcon w="16px" height="16px" />
-                  </Box>
-                )}
+                <Box>
+                  <Text marginY="-4px">{ellipseAddress(curAddress, 4)}</Text>
+                  <Text>{getNetworkName()}</Text>
+                </Box>
+
+                {isOpen ? '' : <></>}
               </Flex>
             </MenuButton>
             <MenuList
@@ -509,7 +485,6 @@ export default function Web3Com({ variant }: Web3Props) {
             onConnect();
           }}
         >
-          <Image src={connectIcon1} width="24px" />
           <Text fontSize="12px">{t('connect')}</Text>
         </Flex>
       )}
