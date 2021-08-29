@@ -5,6 +5,9 @@ import { QueryClientProvider } from 'react-query';
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 
 import Home from './pages/home';
+import Inventory from './pages/inventory';
+import Pools from './pages/pools';
+import Synthesis from './pages/synthesis';
 import NotFound from './pages/404';
 import Header from './components/header';
 import Footer from './components/footer';
@@ -30,6 +33,9 @@ const ControlledLayout = () => {
       <Header sticky />
       <Switch>
         <Route exact strict path="/" component={Home} />
+        <Route exact strict path="/inventory" component={Inventory} />
+        <Route exact strict path="/pools" component={Pools} />
+        <Route exact strict path="/synthesis" component={Synthesis} />
         <Route exact strict path="*" component={NotFound} />
       </Switch>
       <Footer />

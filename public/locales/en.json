@@ -1,3 +1,12 @@
 {
-  "nav.home": "Home"
+  "home": "Home",
+  "inventory": "Inventory",
+  "pools": "Pools",
+  "synthesis": "Synthesis",
+  "pawns": "Pawns",
+  "scenes": "Scenes",
+  "parts": "Parts",
+  "connect": "Connect Wallet",
+  "disconnect": "Disconnect Wallet",
+  "connect.tip": "Please connect your wallet"
 }

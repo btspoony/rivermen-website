@@ -27,7 +27,11 @@ const Page = () => {
 
   // }, []);
 
-  return <CommLayout title="title.home">home</CommLayout>;
+  return (
+    <CommLayout title="title.home">
+      <AssetList />
+    </CommLayout>
+  );
 };
 
 export default Page;

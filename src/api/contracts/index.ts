@@ -1,16 +1,16 @@
-import farmiland from './Farmiland.json';
-import farm from './Farm.json';
+import pawnPool from './pawnPool.json';
+import erc721 from './ERC721.json';
 import {
-  getFarmilandContractAddr,
-  getFarmContractAddr,
+  getRMContractAddr,
+  getDAOContractAddr,
   getContract,
   callContract,
   writeContract,
 } from '../../utils/web3';
 
-export const farmilandApi = () => {
-  const contractAddress = getFarmilandContractAddr();
-  const contract = getContract(contractAddress, farmiland.abi);
+export const pawnPoolApi = () => {
+  const contractAddress = getDAOContractAddr();
+  const contract = getContract(contractAddress, pawnPool);
   console.log(contract);
 
   const cardReleaseTime = async (poolId: number, cardId: number) => {
@@ -29,19 +29,37 @@ export const farmilandApi = () => {
   };
 
   return {
-    ...contract,
+    // ...contract,
     cardReleaseTime,
     cardPoints,
     earned,
   };
 };
 
-export const farmApi = () => {
-  const contractAddress = getFarmContractAddr();
-  const contract = getContract(contractAddress, farm.abi);
+export const RMApi = () => {
+  const contractAddress = getRMContractAddr();
+  const contract = getContract(contractAddress, erc721);
+
+  const getApproved = async (id: number) => {
+    const res = await callContract(contract, 'getApproved', [id]);
+    return res;
+  };
+
+  // approve token to dao contract
+  const approve = async (to: string, id: number, cbs: any) => {
+    const res = await writeContract(contract, 'approve', [to, id], cbs);
+    return res;
+  };
+
+  // const approve = async (poolId: number, amount: number, cbs: any) => {
+  //   const res = await writeContract(contract, 'stake', [poolId, amount], cbs);
+  //   return res;
+  // };
 
   return {
-    ...contract,
+    // ...contract,
+    approve,
+    getApproved,
   };
 };
 

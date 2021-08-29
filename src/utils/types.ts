@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 export interface IAssetData {
   symbol: string;
   name: string;
@@ -169,4 +170,14 @@ export interface IAppState {
   showModal: boolean;
   pendingRequest: boolean;
   result: any | null;
+}
+
+export type toastStatus = 'success' | 'info' | 'warning' | 'error' | undefined;
+
+export interface ToastProps {
+  title?: string;
+  desc: string | ReactNode;
+  status?: String;
+  duration?: number;
+  isClosable?: boolean;
 }

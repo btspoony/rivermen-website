@@ -4329,6 +4329,17 @@
     window-getters "1.0.0"
     window-metadata "1.0.0"
 
+"@walletconnect/browser-utils@^1.6.5":
+  version "1.6.5"
+  resolved "https://r.cnpmjs.org/@walletconnect/browser-utils/download/@walletconnect/browser-utils-1.6.5.tgz#01180682e90b95384e820191a1c6ad4a78729439"
+  integrity sha1-ARgGgukLlThOggGRocatSnhylDk=
+  dependencies:
+    "@walletconnect/safe-json" "1.0.0"
+    "@walletconnect/types" "^1.6.5"
+    "@walletconnect/window-getters" "1.0.0"
+    "@walletconnect/window-metadata" "1.0.0"
+    detect-browser "5.2.0"
+
 "@walletconnect/client@^1.4.1":
   version "1.4.1"
   resolved "https://registry.nlark.com/@walletconnect/client/download/@walletconnect/client-1.4.1.tgz#c9c50df5afde23a35e23d96fe6d207c102e53850"
@@ -4339,6 +4350,16 @@
     "@walletconnect/types" "^1.4.1"
     "@walletconnect/utils" "^1.4.1"
 
+"@walletconnect/client@^1.6.5":
+  version "1.6.5"
+  resolved "https://r.cnpmjs.org/@walletconnect/client/download/@walletconnect/client-1.6.5.tgz#6616ae926abc7c87c48a2d3693f2eb697858e685"
+  integrity sha1-Zhaukmq8fIfEii02k/LraXhY5oU=
+  dependencies:
+    "@walletconnect/core" "^1.6.5"
+    "@walletconnect/iso-crypto" "^1.6.5"
+    "@walletconnect/types" "^1.6.5"
+    "@walletconnect/utils" "^1.6.5"
+
 "@walletconnect/core@^1.4.1":
   version "1.4.1"
   resolved "https://registry.nlark.com/@walletconnect/core/download/@walletconnect/core-1.4.1.tgz#68310ee7c9737a7a0a7f1308abbfc1c31212b9a6"
@@ -4347,6 +4368,39 @@
     "@walletconnect/socket-transport" "^1.4.1"
     "@walletconnect/types" "^1.4.1"
     "@walletconnect/utils" "^1.4.1"
+
+"@walletconnect/core@^1.6.5":
+  version "1.6.5"
+  resolved "https://r.cnpmjs.org/@walletconnect/core/download/@walletconnect/core-1.6.5.tgz#acb687fc7c2d71ce2adad6a921ec1b343c4b4dd7"
+  integrity sha1-rLaH/Hwtcc4q2tapIewbNDxLTdc=
+  dependencies:
+    "@walletconnect/socket-transport" "^1.6.5"
+    "@walletconnect/types" "^1.6.5"
+    "@walletconnect/utils" "^1.6.5"
+
+"@walletconnect/crypto@^1.0.1":
+  version "1.0.1"
+  resolved "https://r.cnpmjs.org/@walletconnect/crypto/download/@walletconnect/crypto-1.0.1.tgz#d4c1b1cd5dd1be88fe9a82dfc54cadbbb3f9d325"
+  integrity sha1-1MGxzV3Rvoj+moLfxUytu7P50yU=
+  dependencies:
+    "@walletconnect/encoding" "^1.0.0"
+    "@walletconnect/environment" "^1.0.0"
+    "@walletconnect/randombytes" "^1.0.1"
+    aes-js "^3.1.2"
+    hash.js "^1.1.7"
+
+"@walletconnect/encoding@^1.0.0":
+  version "1.0.0"
+  resolved "https://r.cnpmjs.org/@walletconnect/encoding/download/@walletconnect/encoding-1.0.0.tgz#e24190cb5e803526f9dfd7191fb0e4dc53c6d864"
+  integrity sha1-4kGQy16ANSb539cZH7Dk3FPG2GQ=
+  dependencies:
+    is-typedarray "1.0.0"
+    typedarray-to-buffer "3.1.5"
+
+"@walletconnect/environment@^1.0.0":
+  version "1.0.0"
+  resolved "https://r.cnpmjs.org/@walletconnect/environment/download/@walletconnect/environment-1.0.0.tgz#c4545869fa9c389ec88c364e1a5f8178e8ab5034"
+  integrity sha1-xFRYafqcOJ7IjDZOGl+BeOirUDQ=
 
 "@walletconnect/http-connection@^1.4.1":
   version "1.4.1"
@@ -4358,6 +4412,16 @@
     eventemitter3 "4.0.7"
     xhr2-cookies "1.1.0"
 
+"@walletconnect/http-connection@^1.6.5":
+  version "1.6.5"
+  resolved "https://r.cnpmjs.org/@walletconnect/http-connection/download/@walletconnect/http-connection-1.6.5.tgz#18529b7556bc09d7c794f4adc76ef0742cd500aa"
+  integrity sha1-GFKbdVa8CdfHlPStx27wdCzVAKo=
+  dependencies:
+    "@walletconnect/types" "^1.6.5"
+    "@walletconnect/utils" "^1.6.5"
+    eventemitter3 "4.0.7"
+    xhr2-cookies "1.1.0"
+
 "@walletconnect/iso-crypto@^1.4.1":
   version "1.4.1"
   resolved "https://registry.nlark.com/@walletconnect/iso-crypto/download/@walletconnect/iso-crypto-1.4.1.tgz#0d9793c679d6c5443c49cce83f5d8dd476a65df2"
@@ -4366,6 +4430,30 @@
     "@pedrouid/iso-crypto" "^1.0.0"
     "@walletconnect/types" "^1.4.1"
     "@walletconnect/utils" "^1.4.1"
+
+"@walletconnect/iso-crypto@^1.6.5":
+  version "1.6.5"
+  resolved "https://r.cnpmjs.org/@walletconnect/iso-crypto/download/@walletconnect/iso-crypto-1.6.5.tgz#1c6471506283817e7e797c5e2e733f6c3d88f8dc"
+  integrity sha1-HGRxUGKDgX5+eXxeLnM/bD2I+Nw=
+  dependencies:
+    "@walletconnect/crypto" "^1.0.1"
+    "@walletconnect/types" "^1.6.5"
+    "@walletconnect/utils" "^1.6.5"
+
+"@walletconnect/jsonrpc-types@^1.0.0":
+  version "1.0.0"
+  resolved "https://r.cnpmjs.org/@walletconnect/jsonrpc-types/download/@walletconnect/jsonrpc-types-1.0.0.tgz#fa75ad5e8f106a2e33287b1e6833e22ed0225055"
+  integrity sha1-+nWtXo8Qai4zKHseaDPiLtAiUFU=
+  dependencies:
+    keyvaluestorage-interface "^1.0.0"
+
+"@walletconnect/jsonrpc-utils@^1.0.0":
+  version "1.0.0"
+  resolved "https://r.cnpmjs.org/@walletconnect/jsonrpc-utils/download/@walletconnect/jsonrpc-utils-1.0.0.tgz#1a2f668d606e8f0b6e7d8fdebae86001bd037a3f"
+  integrity sha1-Gi9mjWBujwtufY/euuhgAb0Dej8=
+  dependencies:
+    "@walletconnect/environment" "^1.0.0"
+    "@walletconnect/jsonrpc-types" "^1.0.0"
 
 "@walletconnect/mobile-registry@^1.4.0":
   version "1.4.0"
@@ -4383,6 +4471,32 @@
     preact "10.4.1"
     qrcode "1.4.4"
 
+"@walletconnect/qrcode-modal@^1.6.5":
+  version "1.6.5"
+  resolved "https://r.cnpmjs.org/@walletconnect/qrcode-modal/download/@walletconnect/qrcode-modal-1.6.5.tgz#58974ca8f826bd500121e85694dd342b3535cf2c"
+  integrity sha1-WJdMqPgmvVABIehWlN00KzU1zyw=
+  dependencies:
+    "@walletconnect/browser-utils" "^1.6.5"
+    "@walletconnect/mobile-registry" "^1.4.0"
+    "@walletconnect/types" "^1.6.5"
+    copy-to-clipboard "^3.3.1"
+    preact "10.4.1"
+    qrcode "1.4.4"
+
+"@walletconnect/randombytes@^1.0.1":
+  version "1.0.1"
+  resolved "https://r.cnpmjs.org/@walletconnect/randombytes/download/@walletconnect/randombytes-1.0.1.tgz#87f0f02d9206704ce1c9e23f07d3b28898c48385"
+  integrity sha1-h/DwLZIGcEzhyeI/B9OyiJjEg4U=
+  dependencies:
+    "@walletconnect/encoding" "^1.0.0"
+    "@walletconnect/environment" "^1.0.0"
+    randombytes "^2.1.0"
+
+"@walletconnect/safe-json@1.0.0":
+  version "1.0.0"
+  resolved "https://r.cnpmjs.org/@walletconnect/safe-json/download/@walletconnect/safe-json-1.0.0.tgz#12eeb11d43795199c045fafde97e3c91646683b2"
+  integrity sha1-Eu6xHUN5UZnARfr96X48kWRmg7I=
+
 "@walletconnect/socket-transport@^1.4.1":
   version "1.4.1"
   resolved "https://registry.nlark.com/@walletconnect/socket-transport/download/@walletconnect/socket-transport-1.4.1.tgz#d9b7ebb9a2843cc44cf96c880c62be78d4a1625f"
@@ -4392,10 +4506,24 @@
     "@walletconnect/utils" "^1.4.1"
     ws "7.3.0"
 
+"@walletconnect/socket-transport@^1.6.5":
+  version "1.6.5"
+  resolved "https://r.cnpmjs.org/@walletconnect/socket-transport/download/@walletconnect/socket-transport-1.6.5.tgz#f190f2d994021287fdeaf071114a5415096b2535"
+  integrity sha1-8ZDy2ZQCEof96vBxEUpUFQlrJTU=
+  dependencies:
+    "@walletconnect/types" "^1.6.5"
+    "@walletconnect/utils" "^1.6.5"
+    ws "7.5.3"
+
 "@walletconnect/types@^1.4.1":
   version "1.4.1"
   resolved "https://registry.nlark.com/@walletconnect/types/download/@walletconnect/types-1.4.1.tgz#48297238b86f846b8c694504ca45f0059a2cca88"
   integrity sha1-SClyOLhvhGuMaUUEykXwBZosyog=
+
+"@walletconnect/types@^1.6.5":
+  version "1.6.5"
+  resolved "https://r.cnpmjs.org/@walletconnect/types/download/@walletconnect/types-1.6.5.tgz#31ad1415fc6e1e89e25a10ad5fed6958f56cefa8"
+  integrity sha1-Ma0UFfxuHoniWhCtX+1pWPVs76g=
 
 "@walletconnect/utils@^1.4.1":
   version "1.4.1"
@@ -4410,6 +4538,19 @@
     js-sha3 "0.8.0"
     query-string "6.13.5"
 
+"@walletconnect/utils@^1.6.5":
+  version "1.6.5"
+  resolved "https://r.cnpmjs.org/@walletconnect/utils/download/@walletconnect/utils-1.6.5.tgz#6edd749cb52a363feda117121dc865d7cc6169f7"
+  integrity sha1-bt10nLUqNj/toRcSHchl18xhafc=
+  dependencies:
+    "@walletconnect/browser-utils" "^1.6.5"
+    "@walletconnect/encoding" "^1.0.0"
+    "@walletconnect/jsonrpc-utils" "^1.0.0"
+    "@walletconnect/types" "^1.6.5"
+    bn.js "4.11.8"
+    js-sha3 "0.8.0"
+    query-string "6.13.5"
+
 "@walletconnect/web3-provider@^1.0.0-beta.47":
   version "1.4.1"
   resolved "https://registry.nlark.com/@walletconnect/web3-provider/download/@walletconnect/web3-provider-1.4.1.tgz#34f6319ab2473ab9ff0fcf1e8bc280c697fa01ff"
@@ -4421,6 +4562,30 @@
     "@walletconnect/types" "^1.4.1"
     "@walletconnect/utils" "^1.4.1"
     web3-provider-engine "16.0.1"
+
+"@walletconnect/web3-provider@^1.6.5":
+  version "1.6.5"
+  resolved "https://r.cnpmjs.org/@walletconnect/web3-provider/download/@walletconnect/web3-provider-1.6.5.tgz#7c4ac2f89ddda1a4069d500ed29cc4396e7fdade"
+  integrity sha1-fErC+J3doaQGnVAO0pzEOW5/2t4=
+  dependencies:
+    "@walletconnect/client" "^1.6.5"
+    "@walletconnect/http-connection" "^1.6.5"
+    "@walletconnect/qrcode-modal" "^1.6.5"
+    "@walletconnect/types" "^1.6.5"
+    "@walletconnect/utils" "^1.6.5"
+    web3-provider-engine "16.0.1"
+
+"@walletconnect/window-getters@1.0.0", "@walletconnect/window-getters@^1.0.0":
+  version "1.0.0"
+  resolved "https://r.cnpmjs.org/@walletconnect/window-getters/download/@walletconnect/window-getters-1.0.0.tgz#1053224f77e725dfd611c83931b5f6c98c32bfc8"
+  integrity sha1-EFMiT3fnJd/WEcg5MbX2yYwyv8g=
+
+"@walletconnect/window-metadata@1.0.0":
+  version "1.0.0"
+  resolved "https://r.cnpmjs.org/@walletconnect/window-metadata/download/@walletconnect/window-metadata-1.0.0.tgz#93b1cc685e6b9b202f29c26be550fde97800c4e5"
+  integrity sha1-k7HMaF5rmyAvKcJr5VD96XgAxOU=
+  dependencies:
+    "@walletconnect/window-getters" "^1.0.0"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -5320,6 +5485,13 @@ axios@^0.18.0:
     follow-redirects "1.5.10"
     is-buffer "^2.0.2"
 
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://r.cnpmjs.org/axios/download/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha1-IlY0gZYvTWvemnbVFu8OXTwJsrg=
+  dependencies:
+    follow-redirects "^1.10.0"
+
 axobject-query@^2.2.0:
   version "2.2.0"
   resolved "https://registry.npm.taobao.org/axobject-query/download/axobject-query-2.2.0.tgz#943d47e10c0b704aa42275e20edf3722648989be"
@@ -6149,6 +6321,11 @@ big.js@^5.1.2, big.js@^5.2.2:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.2.2.tgz#65f0af382f578bcdc742bd9c281e9cb2d7768328"
   integrity sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
+
+big.js@^6.1.1:
+  version "6.1.1"
+  resolved "https://r.cnpmjs.org/big.js/download/big.js-6.1.1.tgz#63b35b19dc9775c94991ee5db7694880655d5537"
+  integrity sha1-Y7NbGdyXdclJke5dt2lIgGVdVTc=
 
 bignumber.js@^9.0.0:
   version "9.0.1"
@@ -7534,7 +7711,7 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-copy-to-clipboard@3.3.1:
+copy-to-clipboard@3.3.1, copy-to-clipboard@^3.3.1:
   version "3.3.1"
   resolved "https://registry.npm.taobao.org/copy-to-clipboard/download/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
   integrity sha1-EVqhqZmP+rYZb5MHatbaO5E2Yq4=
@@ -10529,6 +10706,11 @@ follow-redirects@^1.0.0:
   integrity sha512-CRcPzsSIbXyVDl0QI01muNDu69S8trU4jArW9LpOt2WtC6LyUJetcIrmfHsRBx7/Jb6GHJUiuqyYxPooFfNt6A==
   dependencies:
     debug "^3.0.0"
+
+follow-redirects@^1.10.0:
+  version "1.14.2"
+  resolved "https://r.cnpmjs.org/follow-redirects/download/follow-redirects-1.14.2.tgz#cecb825047c00f5e66b142f90fed4f515dec789b"
+  integrity sha1-zsuCUEfAD15msUL5D+1PUV3seJs=
 
 for-each@~0.3.3:
   version "0.3.3"
@@ -16000,7 +16182,7 @@ mock-fs@^4.1.0:
   resolved "https://registry.nlark.com/mock-fs/download/mock-fs-4.14.0.tgz#ce5124d2c601421255985e6e94da80a7357b1b18"
   integrity sha1-zlEk0sYBQhJVmF5ulNqApzV7Gxg=
 
-moment@^2.24.0:
+moment@^2.24.0, moment@^2.29.1:
   version "2.29.1"
   resolved "https://registry.npm.taobao.org/moment/download/moment-2.29.1.tgz?cache=0&sync_timestamp=1601983320283&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmoment%2Fdownload%2Fmoment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha1-sr52n6MZQL6e7qZGnAdeNQBvo9M=
@@ -23744,6 +23926,11 @@ ws@7.4.6, ws@^7.4.5, ws@~7.4.2:
   version "7.4.6"
   resolved "https://registry.nlark.com/ws/download/ws-7.4.6.tgz#5654ca8ecdeee47c33a9a4bf6d28e2be2980377c"
   integrity sha1-VlTKjs3u5HwzqaS/bSjivimAN3w=
+
+ws@7.5.3:
+  version "7.5.3"
+  resolved "https://r.cnpmjs.org/ws/download/ws-7.5.3.tgz#160835b63c7d97bfab418fc1b8a9fced2ac01a74"
+  integrity sha1-Fgg1tjx9l7+rQY/BuKn87SrAGnQ=
 
 ws@^1.1.0:
   version "1.1.5"

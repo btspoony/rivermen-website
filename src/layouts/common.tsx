@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, HStack } from '@chakra-ui/react';
 // import { useTranslation } from 'react-i18next';
+import SideMenu from '../components/sideMenu';
 
 interface Props {
   children: React.ReactNode;
@@ -10,9 +11,10 @@ interface Props {
 const Layout = ({ children }: Props) => {
   // const { t } = useTranslation();
   return (
-    <Box pt={20} px={8}>
+    <HStack pt={20} px={8}>
+      <SideMenu />
       {children}
-    </Box>
+    </HStack>
   );
 };
 

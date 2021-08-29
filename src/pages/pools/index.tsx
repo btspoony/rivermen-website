@@ -27,7 +27,7 @@ const Page = () => {
 
   // }, []);
 
-  return <CommLayout title="title.home">home</CommLayout>;
+  return <CommLayout title="title.home">pool</CommLayout>;
 };
 
 export default Page;
