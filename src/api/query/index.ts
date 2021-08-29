@@ -1,11 +1,8 @@
 // export * from './queryClient';
-import {
-  useQuery,
-  // useMutation,
-} from 'react-query';
+import { useQuery } from 'react-query';
 import { globalStore } from 'rekv';
 import { pawnPoolApi, RMApi } from '../contracts';
-import { getPawnContractAddr, getNFTAddr } from '../../utils/web3';
+import { getPawnContractAddr, getRMAddr, getRMContractAddr } from '../../utils/web3';
 import { formatBalance, getMetadata, getConfig, postQuery, queryAssets } from '../../utils';
 import { add } from '../../utils/bignumber';
 
@@ -46,43 +43,16 @@ export const usePoolInfo = (idx: number) => {
   return useQuery(`${POOL_QUERY}${idx}`, getPoolInfo);
 };
 
-// query balance for current address
-//   export const useFaceValue = (poolId: number, nftAddress: string, nftId: number) => {
-//     const getInfo = async () => {
-//       const bistro = pawnPoolApi();
-//       const value = await bistro.getFaceValue(poolId, nftAddress, nftId);
-
-//       return { value };
-//     };
-
-//     return useQuery(`${MY_FACE_VALUE_QUERY}${poolId}${nftAddress}${nftId}`, getInfo);
-//   };
-
-//   export const useConfig = () => {
-//     const getConfigData = async () => {
-//       const poolConfig = await getConfig('poolConfig');
-//       const redeemConfig = await getConfig('redeemConfig');
-//       const disableCards = await getConfig('disableCards');
-//       return { poolConfig, redeemConfig, disableCards };
-//     };
-//     return useQuery(`${CONFIG_QUERY}`, getConfigData);
-//   };
-
-export const useAccountAssets = (addr: string) => {
-  const getUserMainnetRice = async () => {
+export const useAccountAssets = (addr: string, idx: number) => {
+  const getUserAssets = async () => {
     if (!addr) {
       return [];
     }
-    const query = `{
-      accounts(where:{id: "${addr.toLowerCase()}"}) {
-        balances {
-          value
-        }
-      }
-    }`;
-    const { accounts = [] } = await postQueryRice(query.toString(), {});
-    return accounts;
+    const address = [getRMContractAddr()];
+    const { assets } = await queryAssets(addr, address[idx]);
+
+    return assets;
   };
 
-  return useQuery(`${QUERY_USER_RM}`, getUserMainnetRice);
+  return useQuery(`${QUERY_USER_RM}${addr}${idx}`, getUserAssets);
 };

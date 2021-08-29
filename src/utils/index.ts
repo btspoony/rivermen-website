@@ -100,12 +100,12 @@ export const getMetadata = async (cardId: string, uri = tokenURI) => {
 
 export const queryAssets = async (owner: string, contract: string, limit = 50) => {
   try {
-    const url = `${openSeaURL}/assets`;
-    const req = await axios.get(url, { params: { owner, contract, limit } });
+    const url = `${openSeaURL}assets`;
+    const req = await axios.get(url, {
+      params: { owner, asset_contract_address: contract, limit },
+    });
     const { data } = req;
-    return {
-      ...data,
-    };
+    return data;
   } catch (error) {
     console.log('get assets error: ', error);
     return {};
