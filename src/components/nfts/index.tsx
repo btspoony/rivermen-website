@@ -8,46 +8,68 @@ import colors from '../../themes/colors';
 import { RMApi } from '../../api/contracts';
 import { toast, formatBalance } from '../../utils';
 import { getPawnContractAddr } from '../../utils/web3';
-import { getAddrState } from '../../api/query';
+import { getAddrState, useApproval } from '../../api/query';
 import { ToastProps } from '../../utils/types';
+import { zeroAddr } from '../../config/constants';
 
 const NFT: FC = (props: any) => {
   const [loading, setLoading] = useState(false);
-  const { refetch, cb } = props;
+  const { refetch = null, cb } = props;
   const pawnPoolAddr = getPawnContractAddr();
   const currentAddr = getAddrState();
+
+  const { data } = useApproval(props.token_id);
+
   const approve = async (id: number, isCancle = false) => {
-    const rivermenContract = RMApi();
+    try {
+      const rivermenContract = RMApi();
 
-    const toastProps: ToastProps = {
-      title: 'Transaction',
-      desc: '',
-      status: 'success',
-    };
-    setLoading(true);
-    const cbs = {
-      receipt: () => {
-        toastProps.desc = t(`approve.success`);
-        toast(toastProps);
-        setLoading(false);
-        // ReactGA.event({
-        // 	category: formType,
-        // 	action: `${formType} fund success`,
-        // 	value: amount,
-        // });
-        refetch();
-        if (cb) {
-          cb();
-        }
-      },
-      error: () => {
-        setLoading(false);
-        refetch();
-      },
-    };
+      const toastProps: ToastProps = {
+        title: 'Transaction',
+        desc: '',
+        status: 'success',
+      };
+      setLoading(true);
+      const cbs = {
+        receipt: () => {
+          toastProps.desc = t(`approve.success`);
+          toast(toastProps);
+          setLoading(false);
+          // ReactGA.event({
+          // 	category: formType,
+          // 	action: `${formType} fund success`,
+          // 	value: amount,
+          // });
+          if (refetch) {
+            refetch();
+          }
+          if (cb) {
+            cb();
+          }
+        },
+        error: () => {
+          setLoading(false);
+          if (refetch) {
+            refetch();
+          }
+        },
+      };
 
-    const addr = isCancle ? pawnPoolAddr : currentAddr;
-    const res = await rivermenContract.approve(addr, id, cbs);
+      const addr = isCancle ? zeroAddr : pawnPoolAddr;
+      const res = await rivermenContract.approve(addr, id, cbs);
+    } catch (error) {
+      const toastProps = {
+        title: '',
+        desc: '',
+        duration: 6000,
+        status: 'info',
+      };
+      toastProps.title = 'Error';
+      toastProps.desc = error.message;
+      toastProps.status = 'error';
+      toast(toastProps);
+      setLoading(false);
+    }
   };
 
   return (
@@ -64,19 +86,23 @@ const NFT: FC = (props: any) => {
 
       <Flex w="100%" justify="space-between">
         <Box>
-          <IconButton
-            mr={2}
-            isLoading={loading}
-            aria-label="Approve"
-            icon={<UnlockIcon />}
-            onClick={() => approve(props.token_id)}
-          />
-          <IconButton
-            isLoading={loading}
-            aria-label="Cancel approve"
-            icon={<MinusIcon />}
-            onClick={() => approve(props.token_id, true)}
-          />
+          {!data && (
+            <IconButton
+              mr={2}
+              isLoading={loading}
+              aria-label="Approve"
+              icon={<UnlockIcon />}
+              onClick={() => approve(props.token_id)}
+            />
+          )}
+          {data && (
+            <IconButton
+              isLoading={loading}
+              aria-label="Cancel approve"
+              icon={<MinusIcon />}
+              onClick={() => approve(props.token_id, true)}
+            />
+          )}
         </Box>
         <Text
           colorScheme="green"

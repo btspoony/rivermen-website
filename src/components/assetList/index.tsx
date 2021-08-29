@@ -38,8 +38,8 @@ const Comp: FC = (props) => {
         <TabPanels>
           <TabPanel>
             <SimpleGrid minChildWidth="265px" spacing="20px">
-              {data.map((asset: any) => {
-                return <NFT {...asset} address={getContractAddr(index)} />;
+              {data.map((asset: any, idx: number) => {
+                return <NFT key={idx} {...asset} address={getContractAddr(index)} />;
               })}
             </SimpleGrid>
           </TabPanel>

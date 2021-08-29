@@ -36,8 +36,8 @@ export const pawnPoolApi = () => {
   };
 };
 
-export const RMApi = () => {
-  const contractAddress = getRMContractAddr();
+export const RMApi = (address = '') => {
+  const contractAddress = address || getRMContractAddr();
   const contract = getContract(contractAddress, erc721);
 
   const getApproved = async (id: number) => {

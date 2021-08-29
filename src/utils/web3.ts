@@ -35,13 +35,25 @@ export const isAddress = (value: any): string | false => {
   }
 };
 
+// // account is optional
+// export const getContract = (address: string, ABI: any, account?: string) => {
+//   // if (!isAddress(address) || address === AddressZero) {
+//   //   throw Error(`Invalid 'address' parameter '${address}'.`);
+//   // }
+//   // return new Contract(address, ABI, getProviderOrSigner(account) as any)
+//   // return new web3.eth.Contract(ABI, address);
+// };
+
 // account is optional
 export const getContract = (address: string, ABI: any, account?: string) => {
-  // if (!isAddress(address) || address === AddressZero) {
-  //   throw Error(`Invalid 'address' parameter '${address}'.`);
-  // }
+  if (!address) return null;
+  if (!isAddress(address) || address === AddressZero) {
+    throw Error(`Invalid 'address' parameter '${address}'.`);
+  }
+  if (!web3 || !web3.eth) return null;
+
   // return new Contract(address, ABI, getProviderOrSigner(account) as any)
-  // return new web3.eth.Contract(ABI, address);
+  return new web3.eth.Contract(ABI, address);
 };
 
 export function getWbe3() {

@@ -4,7 +4,6 @@ import { globalStore } from 'rekv';
 import { pawnPoolApi, RMApi } from '../contracts';
 import { getPawnContractAddr, getRMAddr, getRMContractAddr } from '../../utils/web3';
 import { formatBalance, getMetadata, getConfig, postQuery, queryAssets } from '../../utils';
-import { add } from '../../utils/bignumber';
 
 export * from './queryClient';
 
@@ -41,6 +40,18 @@ export const usePoolInfo = (idx: number) => {
     };
   };
   return useQuery(`${POOL_QUERY}${idx}`, getPoolInfo);
+};
+
+export const useApproval = (idx: number, tokenAddr = '', approveAddr = '') => {
+  const queryApproval = async () => {
+    const nftAddr = tokenAddr || getRMAddr();
+    const targetAddr = approveAddr || getPawnContractAddr();
+    const contract = RMApi(nftAddr);
+    const res = await contract.getApproved(idx);
+    return res === targetAddr;
+  };
+
+  return useQuery(`${QUERY_USER_RM}${tokenAddr}${idx}${approveAddr}`, queryApproval);
 };
 
 export const useAccountAssets = (addr: string, idx: number) => {

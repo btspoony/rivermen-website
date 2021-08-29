@@ -34,11 +34,13 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
       backgroundColor={themes.bgColor}
       boxShadow="md"
       height="65px"
+      zIndex={9999}
       px={8}
       position={sticky ? 'fixed' : 'initial'}
       top={0}
       left={0}
       right={0}
+      bgColor="white"
     >
       <Container display="flex" justifyContent="space-between" alignItems="center">
         <Flex

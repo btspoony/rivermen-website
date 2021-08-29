@@ -20,7 +20,7 @@ const overrides: ThemeOverride = {
   colors,
   // colorMode config
   config: {
-    initialColorMode: 'dark',
+    initialColorMode: 'light',
     useSystemColorMode: false,
   },
   styles, // global style

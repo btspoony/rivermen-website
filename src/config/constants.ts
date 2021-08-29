@@ -1,6 +1,6 @@
 /* eslint-disable */
 export const NAV_MAP: Record<string, string> = {
-  'nav.home': '/',
+  home: '/',
 };
 
 export enum ChainId {
@@ -13,6 +13,8 @@ export enum ChainId {
   XDAI = 100,
 }
 export const SupportedChainId = [1, 4]; // xdai and rinkeby
+
+export const zeroAddr = '0x0000000000000000000000000000000000000000';
 
 export const SYN_ADDRESS: any = {
   [ChainId.MAINNET]: '0x32bF46Fd2F6b2d624E555eB9C6Ee9482092e1150',
