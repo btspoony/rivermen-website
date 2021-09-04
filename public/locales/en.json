@@ -9,5 +9,6 @@
   "parts": "Parts",
   "connect": "Connect Wallet",
   "disconnect": "Disconnect Wallet",
-  "connect.tip": "Please connect your wallet"
+  "connect.tip": "Please connect your wallet",
+  "btn.connect": "Connect"
 }

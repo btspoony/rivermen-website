@@ -9,5 +9,6 @@
   "parts": "长卷碎片",
   "connect": "连接钱包",
   "disconnect": "断开钱包",
-  "connect.tip": "请连接到你的钱包"
+  "connect.tip": "请连接到你的钱包",
+  "btn.connect": "连接钱包"
 }

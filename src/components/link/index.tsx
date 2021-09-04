@@ -1,8 +1,8 @@
 import { Link as RouterLink } from 'react-router-dom';
 import { Text, Link, HTMLChakraProps, LinkProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
+import { t } from '../../i18n';
 import colors from '../../themes/colors';
 
 export interface NLinkProps extends HTMLChakraProps<'p'> {
@@ -14,7 +14,6 @@ export interface NLinkProps extends HTMLChakraProps<'p'> {
 }
 
 const NLink: FC<NLinkProps> = (props) => {
-  const { t } = useTranslation();
   const { path, title, active = false, bordered = false, linkProps, ...restStyles } = props;
 
   const borderBottom = {

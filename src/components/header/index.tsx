@@ -1,7 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { Container, Flex } from '@chakra-ui/react';
 import { globalStore } from 'rekv';
-// import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
 import NavLink from '../navlink';
@@ -19,7 +18,7 @@ export interface HeaderProps {
 const Header: FC<HeaderProps> = ({ sticky }) => {
   const history = useHistory();
   const { account, api } = globalStore.useState('account', 'api');
-  // const { t } = useTranslation();
+
   useEffect(() => {
     return () => {
       // cleanup

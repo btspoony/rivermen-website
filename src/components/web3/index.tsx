@@ -272,7 +272,7 @@ export default function Web3Com({ variant }: Web3Props) {
               onConnect();
             }}
           >
-            Connect
+            {t('btn.connect')}
           </Button>
           {/* <Box
             pos="absolute"
