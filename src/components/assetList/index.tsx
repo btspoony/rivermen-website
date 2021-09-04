@@ -32,6 +32,7 @@ const Comp: FC = (props) => {
         <TabList>
           <Tab>{t('pawns')}</Tab>
           <Tab>{t('scenes')}</Tab>
+          <Tab>{t('places')}</Tab>
           <Tab>{t('parts')}</Tab>
         </TabList>
 

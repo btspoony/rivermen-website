@@ -1,3 +1,13 @@
 {
-  "nav.home": "首页"
+  "home": "首页",
+  "inventory": "我的持有",
+  "pools": "合约池",
+  "synthesis": "合约合成",
+  "pawns": "小人",
+  "scenes": "情景碎片",
+  "places": "地点碎片",
+  "parts": "长卷碎片",
+  "connect": "连接钱包",
+  "disconnect": "断开钱包",
+  "connect.tip": "请连接到你的钱包"
 }
