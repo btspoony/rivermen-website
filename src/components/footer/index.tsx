@@ -1,10 +1,7 @@
 import React from 'react';
 import { Box, Flex } from '@chakra-ui/react';
-// import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
-  // const { t } = useTranslation('common');
-
   return (
     <Box as="footer" flex={1} display="flex" justifyContent="center" height="auto">
       <Flex

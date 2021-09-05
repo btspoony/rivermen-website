@@ -1,14 +1,14 @@
 import React, { FC, useEffect } from 'react';
-import { Container, Flex } from '@chakra-ui/react';
+import { Flex, Image, Heading, Spacer, Center, Text } from '@chakra-ui/react';
 import { globalStore } from 'rekv';
-// import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
 import NavLink from '../navlink';
-import ChangeLanguage from '../changeLanguage';
+// import ChangeLanguage from '../changeLanguage';
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Web3Com from '../web3';
 import themes from '../../themes';
+import logoIcon from '../../assets/logo_sandao.svg';
 
 export interface HeaderProps {
   sticky?: boolean;
@@ -19,7 +19,7 @@ export interface HeaderProps {
 const Header: FC<HeaderProps> = ({ sticky }) => {
   const history = useHistory();
   const { account, api } = globalStore.useState('account', 'api');
-  // const { t } = useTranslation();
+
   useEffect(() => {
     return () => {
       // cleanup
@@ -31,6 +31,7 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
       as="header"
       flex={1}
       justify="space-between"
+      alignItems="center"
       backgroundColor={themes.bgColor}
       boxShadow="md"
       height="65px"
@@ -42,27 +43,28 @@ const Header: FC<HeaderProps> = ({ sticky }) => {
       right={0}
       bgColor="white"
     >
-      <Container display="flex" justifyContent="space-between" alignItems="center">
-        <Flex
-          justify="center"
-          mr={8}
-          onClick={() => {
-            history.push('/');
-          }}
-        >
-          logo
-        </Flex>
-
-        <Flex flex="1 1 auto">
-          <NavLink />
-        </Flex>
-
-        <Flex>
-          {/* <ColorModeSwitcher /> */}
-          {/* <ChangeLanguage /> */}
-          <Web3Com />
-        </Flex>
-      </Container>
+      <Flex
+        justify="space-between"
+        mr={8}
+        onClick={() => {
+          history.push('/');
+        }}
+      >
+        <Image borderRadius="lg" src={logoIcon} h={{ base: '48px' }} w={{ base: '48px' }} />
+        <Center pl={4} h={{ base: '48px' }}>
+          <Heading size="md">SanDAO</Heading>
+          <Text pl={2} fontSize="sm">
+            for Rivermen
+          </Text>
+        </Center>
+      </Flex>
+      <NavLink />
+      <Spacer />
+      <Flex>
+        {/* <ColorModeSwitcher /> */}
+        {/* <ChangeLanguage /> */}
+        <Web3Com />
+      </Flex>
     </Flex>
   );
 };

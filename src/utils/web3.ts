@@ -5,7 +5,13 @@ import { getAddress } from '@ethersproject/address';
 import JSBI from 'jsbi';
 import { toast } from '.';
 
-import { ChainId, TOKEN_ADDRESS, RM_ADDRESS, DAO_ADDRESS, SYN_ADDRESS } from '../config/constants';
+import {
+  CHAIN_CONFIGS,
+  TOKEN_ADDRESS,
+  RM_ADDRESS,
+  DAO_ADDRESS,
+  SYN_ADDRESS,
+} from '../config/constants';
 
 export type BigintIsh = JSBI | bigint | string;
 

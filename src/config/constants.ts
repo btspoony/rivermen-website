@@ -3,6 +3,9 @@ export const NAV_MAP: Record<string, string> = {
   home: '/',
 };
 
+export const APP_ENABLED =
+  process.env.NODE_ENV === 'production' ? process.env.REACT_APP_ENABLED === 'true' : true;
+
 export enum ChainId {
   MAINNET = 1,
   ROPSTEN = 3,
