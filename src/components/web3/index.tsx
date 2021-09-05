@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import {
   Box,
+  Center,
   Button,
   Image,
   Text,
@@ -232,13 +233,13 @@ export default function Web3Com({ variant }: Web3Props) {
       <Flex pos="relative" height={{ base: '36px', md: '40px' }}>
         {!connected ? (
           <Button
-            mt={{ base: 0, md: 2 }}
+            mt={{ base: 0, md: 1 }}
             variant="unstyled"
             w={{ base: '80px', md: '180px' }}
             size={'sm'}
             fontSize={{ base: '12px', md: '13px', lg: '14px' }}
-            boxShadow="0px 3px 6px rgba(0, 0, 0, 0.16)"
-            borderRadius="100px"
+            boxShadow={{ base: 'none', md: '0px 0px 20px rgba(0, 0, 0, 0.16)' }}
+            borderRadius="3xl"
             onClick={() => {
               ReactGA.event({
                 category: 'connect',
@@ -252,9 +253,9 @@ export default function Web3Com({ variant }: Web3Props) {
         ) : (
           <Box
             pos="relative"
-            pl={{ base: 0, md: 2 }}
-            py={{ base: 1, md: 2 }}
-            pr={{ base: 9, md: 14 }}
+            pl={{ base: 0, md: 8 }}
+            py={{ base: 0, md: 2 }}
+            pr={{ base: 0, md: 8 }}
             borderRadius="3xl"
             textAlign="center"
             maxW="250px"
@@ -263,61 +264,26 @@ export default function Web3Com({ variant }: Web3Props) {
             boxShadow={{ base: 'none', md: '0px 0px 20px rgba(0, 0, 0, 0.16)' }}
             color={colors.textPrimary}
             bgColor="#fdfdfd"
-            fontSize={{ base: 10, md: 14 }}
+            fontSize={{ base: '12px', md: '13px', lg: '14px' }}
             cursor="pointer"
             onMouseEnter={() => handleOnOpen()}
             onMouseLeave={() => onClose()}
           >
+            <Center width="100%">
+              <Text as="span" display={{ base: 'block', md: 'inline' }}>
+                {getNetworkName()}
+              </Text>
+              <Text as="span" display={{ base: 'block', md: 'inline' }} pl="2">
+                {ellipseAddress(curAddress, 4)}
+              </Text>
+            </Center>
             <Menu isOpen={isOpen} matchWidth={true} offset={menuOffset}>
-              <MenuButton>
-                <Box>
-                  <Text
-                    as="span"
-                    color={colors.textTips}
-                    display={{ base: 'block', md: 'inline' }}
-                    textAlign="right"
-                  >
-                    {getNetworkName()}
-                  </Text>
-                  <Text as="span" d={{ base: 'block', md: 'inline' }} textAlign="center" pl="2">
-                    {ellipseAddress(curAddress, 4)}
-                  </Text>
-                </Box>
-              </MenuButton>
               <MenuList
                 fontSize={{ base: 12, md: 16 }}
                 textColor="textPrimary"
                 fontWeight="bold"
                 minWidth={{ base: '80px', md: '120px' }}
               >
-                {/* <MenuItem
-                onClick={() => {
-                  onClose();
-                  ReactGA.event({
-                    category: 'menu',
-                    action: `jump to perks`,
-                  });
-                  history.push('/perks');
-                }}
-                _hover={{ color: colors.highlight }}
-              >
-                {t('perks')}
-              </MenuItem>
-              <MenuDivider />
-              <MenuItem
-                onClick={() => {
-                  onClose();
-                  ReactGA.event({
-                    category: 'menu',
-                    action: `jump to trophies`,
-                  });
-                  history.push('/trophies');
-                }}
-                _hover={{ color: colors.highlight }}
-              >
-                {t('trophies')}
-              </MenuItem>
-              <MenuDivider /> */}
                 <MenuItem
                   onClick={() => {
                     onClose();
