@@ -32,8 +32,6 @@ import { getChainData, ellipseAddress } from '../../utils/utilities';
 import { ETHERSCAN_PREFIXES } from '../../utils';
 import { openBox, getProfile } from '../../utils/box';
 import { SupportedChainId } from '../../config/constants';
-// import connectIcon from '../../assets/connect.svg';
-// import connectIcon1 from '../../assets/connect-bottom.svg';
 
 // import { account } from '../../stores';
 import { t } from '../../i18n';
@@ -122,20 +120,6 @@ export default function Web3Com({ variant }: Web3Props) {
     onOpen();
   };
 
-  const getBoxProfile = async (address: string, provider: any): Promise<IBoxProfile> => {
-    /* eslint-disable */
-    return new Promise(async (resolve, reject) => {
-      try {
-        const profile = await getProfile(address);
-        if (profile) {
-          // globalStore.setState({ profile });
-        }
-      } catch (error) {
-        reject(error);
-      }
-    });
-  };
-
   const getNetwork = () => {
     return getChainData(chainId).network;
   };
@@ -154,7 +138,6 @@ export default function Web3Com({ variant }: Web3Props) {
         appState: { ...newState, address: accounts[0] },
         profile: null,
       });
-      getBoxProfile(accounts[0], provider);
       window.location.reload();
     });
     provider.on('chainChanged', async (chainIdVal: number) => {
@@ -208,7 +191,6 @@ export default function Web3Com({ variant }: Web3Props) {
     globalStore.setState({
       appState: newState,
     });
-    getBoxProfile(address, provider);
 
     await subscribeProvider(provider, newState);
 
@@ -224,7 +206,7 @@ export default function Web3Com({ variant }: Web3Props) {
       cacheProvider: true,
       providerOptions: getProviderOptions(),
     });
-    globalStore.setState({ web3Modal: web3Modal });
+    globalStore.setState({ web3Modal });
   }, []);
 
   // auto connect
@@ -233,29 +215,22 @@ export default function Web3Com({ variant }: Web3Props) {
       setTimeout(() => {
         onConnect();
       }, 3000);
-      return;
     }
   }, [web3Modal]);
 
   const getNetworkName = () => {
     const networkPre = ETHERSCAN_PREFIXES[chainId];
-    if (!networkPre || networkPre.length == 0) {
+    if (!networkPre || networkPre.length === 0) {
       if (chainId === 1) return 'mainnet';
       return 'unknow';
     }
     return networkPre.split('.')[0];
   };
 
-  const getProfileImageUrl = () => {
-    if (!profile || !profile.image || profile.image.length === 0) return false;
-    const imageUrl = `https://ipfs.io/ipfs/${profile.image[0].contentUrl['/']}`;
-    return imageUrl;
-  };
-
-  return !variant ? (
+  return (
     <Box width={{ base: '100px', md: '204px' }} fontFamily="Eurostile">
-      {!connected ? (
-        <Flex pos="relative" height={{ base: '36px', md: '40px' }}>
+      <Flex pos="relative" height={{ base: '36px', md: '40px' }}>
+        {!connected ? (
           <Button
             mt={{ base: 0, md: 2 }}
             variant="unstyled"
@@ -274,82 +249,48 @@ export default function Web3Com({ variant }: Web3Props) {
           >
             {t('btn.connect')}
           </Button>
-          {/* <Box
-            pos="absolute"
-            w={{ base: '36px', md: '44px', lg: '48px' }}
-            h={{ base: '36px', md: '44px', lg: '48px' }}
-            p={{ base: 2, md: 3 }}
-            right={0}
-            background="white"
-            boxShadow="3px 1px 3px rgba(0, 0, 0, 0.16)"
-            borderRadius="50%"
+        ) : (
+          <Box
+            pos="relative"
+            pl={{ base: 0, md: 2 }}
+            py={{ base: 1, md: 2 }}
+            pr={{ base: 9, md: 14 }}
+            borderRadius="3xl"
+            textAlign="center"
+            maxW="250px"
+            height={{ base: '36px', md: '40px' }}
+            border={{ base: 'none', md: `1px solid ${colors.borderColor}` }}
+            boxShadow={{ base: 'none', md: '0px 0px 20px rgba(0, 0, 0, 0.16)' }}
+            color={colors.textPrimary}
+            bgColor="#fdfdfd"
+            fontSize={{ base: 10, md: 14 }}
+            cursor="pointer"
+            onMouseEnter={() => handleOnOpen()}
+            onMouseLeave={() => onClose()}
           >
-            <Image src={connectIcon} />
-          </Box> */}
-        </Flex>
-      ) : (
-        <Box
-          pos="relative"
-          pl={{ base: 0, md: 2 }}
-          py={{ base: 1, md: 2 }}
-          pr={{ base: 9, md: 14 }}
-          borderRadius="3xl"
-          textAlign="center"
-          maxW="250px"
-          height={{ base: '36px', md: '40px' }}
-          border={{ base: 'none', md: '1px solid ' + colors.borderColor }}
-          boxShadow={{ base: 'none', md: '0px 0px 20px rgba(0, 0, 0, 0.16)' }}
-          color={colors.textPrimary}
-          bgColor="#fdfdfd"
-          fontSize={{ base: 10, md: 14 }}
-          cursor="pointer"
-          onMouseEnter={() => handleOnOpen()}
-          onMouseLeave={() => onClose()}
-        >
-          <Menu isOpen={isOpen} matchWidth={true} offset={menuOffset}>
-            <MenuButton>
-              {profile && profile.name ? (
-                <Box>
-                  <Text as="span" color={colors.textTips} pr={3}>
-                    {getNetworkName()}
-                  </Text>
-                  {profile.name}
-                  {profile.emoji}
-                </Box>
-              ) : (
+            <Menu isOpen={isOpen} matchWidth={true} offset={menuOffset}>
+              <MenuButton>
                 <Box>
                   <Text
                     as="span"
                     color={colors.textTips}
                     display={{ base: 'block', md: 'inline' }}
-                    textAlign={{ base: 'right', md: 'auto' }}
+                    textAlign="right"
                   >
                     {getNetworkName()}
                   </Text>
-                  <Text as="div" d={{ base: 'block', md: 'inline' }} pl="2">
+                  <Text as="span" d={{ base: 'block', md: 'inline' }} textAlign="center" pl="2">
                     {ellipseAddress(curAddress, 4)}
                   </Text>
                 </Box>
-              )}
-              {/* <Box
-                pos="absolute"
-                w={{ base: '36px', md: '44px', lg: '48px' }}
-                h={{ base: '36px', md: '44px', lg: '48px' }}
-                top={{ base: 0, md: -2, lg: -1.5 }}
-                right={0}
+              </MenuButton>
+              <MenuList
+                fontSize={{ base: 12, md: 16 }}
+                textColor="textPrimary"
+                fontWeight="bold"
+                minWidth={{ base: '80px', md: '120px' }}
               >
-                {getProfileImageUrl() ? (
-                  <Image borderRadius="full" src={getProfileImageUrl()} />
-                ) : null}
-              </Box> */}
-            </MenuButton>
-            <MenuList
-              fontSize={{ base: 12, md: 16 }}
-              textColor="textPrimary"
-              fontWeight="bold"
-              minWidth={{ base: '80px', md: '120px' }}
-            >
-              {/* <MenuItem
+                {/* <MenuItem
                 onClick={() => {
                   onClose();
                   ReactGA.event({
@@ -377,117 +318,119 @@ export default function Web3Com({ variant }: Web3Props) {
                 {t('trophies')}
               </MenuItem>
               <MenuDivider /> */}
-              <MenuItem
-                onClick={() => {
-                  onClose();
-                  ReactGA.event({
-                    category: 'logout',
-                    action: `dis connect wallet`,
-                  });
-                  resetApp();
-                }}
-                _hover={{ color: colors.highlight }}
-              >
-                {t('disconnect')}
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        </Box>
-      )}
+                <MenuItem
+                  onClick={() => {
+                    onClose();
+                    ReactGA.event({
+                      category: 'logout',
+                      action: `dis connect wallet`,
+                    });
+                    resetApp();
+                  }}
+                  _hover={{ color: colors.highlight }}
+                >
+                  {t('disconnect')}
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          </Box>
+        )}
+      </Flex>
       {connected && <SwitchNetworkModal />}
     </Box>
-  ) : (
-    <Box>
-      {connected ? (
-        <Box
-          color={colors.textPrimary}
-          fontSize="10px"
-          cursor="pointer"
-          textAlign="center"
-          onMouseEnter={() => handleOnOpen()}
-          onMouseLeave={() => onClose()}
-        >
-          <Menu isOpen={isOpen} matchWidth={true} offset={menuOffset}>
-            <MenuButton>
-              <Flex
-                direction="column"
-                justifyContent="center"
-                alignItems="center"
-                alignContent="center"
-                color="textPrimary"
-                position="relative"
-              >
-                {/* <Box w="24px">
-                  {getProfileImageUrl() ? (
-                    <Image borderRadius="full" src={getProfileImageUrl()} />
-                  ) : (
-                    <Jazzicon address={curAddress} />
-                  )}
-                </Box> */}
-                {/* {profile && profile.name ? (
-                  <Box>
-                    <Text as="span" color={colors.textTips} pr={3}>
-                      {getNetworkName()}
-                    </Text>
-                    {profile.name}
-                    {profile.emoji}
-                  </Box>
-                ) : (
-                  <Box>
-                    <Text marginY="-4px">{ellipseAddress(curAddress, 4)}</Text>
-                    <Text>{getNetworkName()}</Text>
-                  </Box>
-                )} */}
-
-                <Box>
-                  <Text marginY="-4px">{ellipseAddress(curAddress, 4)}</Text>
-                  <Text>{getNetworkName()}</Text>
-                </Box>
-
-                {isOpen ? '' : <></>}
-              </Flex>
-            </MenuButton>
-            <MenuList
-              fontSize={{ base: 12, md: 16 }}
-              textColor="textPrimary"
-              fontWeight="bold"
-              minWidth={{ base: '80px', md: '120px' }}
-            >
-              <MenuItem
-                onClick={() => {
-                  onClose();
-                  ReactGA.event({
-                    category: 'logout',
-                    action: `dis connect wallet`,
-                  });
-                  resetApp();
-                }}
-                _hover={{ color: colors.highlight }}
-              >
-                {t('disconnect')}
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        </Box>
-      ) : (
-        <Flex
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          alignContent="center"
-          color="textPrimary"
-          cursor="pointer"
-          onClick={() => {
-            ReactGA.event({
-              category: 'connect',
-              action: 'connect account',
-            });
-            onConnect();
-          }}
-        >
-          <Text fontSize="12px">{t('connect')}</Text>
-        </Flex>
-      )}
-    </Box>
   );
+  // (
+  //   <Box>
+  //     {connected ? (
+  //       <Box
+  //         color={colors.textPrimary}
+  //         fontSize="10px"
+  //         cursor="pointer"
+  //         textAlign="center"
+  //         onMouseEnter={() => handleOnOpen()}
+  //         onMouseLeave={() => onClose()}
+  //       >
+  //         <Menu isOpen={isOpen} matchWidth={true} offset={menuOffset}>
+  //           <MenuButton>
+  //             <Flex
+  //               direction="column"
+  //               justifyContent="center"
+  //               alignItems="center"
+  //               alignContent="center"
+  //               color="textPrimary"
+  //               position="relative"
+  //             >
+  //               {/* <Box w="24px">
+  //                 {getProfileImageUrl() ? (
+  //                   <Image borderRadius="full" src={getProfileImageUrl()} />
+  //                 ) : (
+  //                   <Jazzicon address={curAddress} />
+  //                 )}
+  //               </Box> */}
+  //               {/* {profile && profile.name ? (
+  //                 <Box>
+  //                   <Text as="span" color={colors.textTips} pr={3}>
+  //                     {getNetworkName()}
+  //                   </Text>
+  //                   {profile.name}
+  //                   {profile.emoji}
+  //                 </Box>
+  //               ) : (
+  //                 <Box>
+  //                   <Text marginY="-4px">{ellipseAddress(curAddress, 4)}</Text>
+  //                   <Text>{getNetworkName()}</Text>
+  //                 </Box>
+  //               )} */}
+
+  //               <Box>
+  //                 <Text marginY="-4px">{ellipseAddress(curAddress, 4)}</Text>
+  //                 <Text>{getNetworkName()}</Text>
+  //               </Box>
+
+  //               {isOpen ? '' : <></>}
+  //             </Flex>
+  //           </MenuButton>
+  //           <MenuList
+  //             fontSize={{ base: 12, md: 16 }}
+  //             textColor="textPrimary"
+  //             fontWeight="bold"
+  //             minWidth={{ base: '80px', md: '120px' }}
+  //           >
+  //             <MenuItem
+  //               onClick={() => {
+  //                 onClose();
+  //                 ReactGA.event({
+  //                   category: 'logout',
+  //                   action: `dis connect wallet`,
+  //                 });
+  //                 resetApp();
+  //               }}
+  //               _hover={{ color: colors.highlight }}
+  //             >
+  //               {t('disconnect')}
+  //             </MenuItem>
+  //           </MenuList>
+  //         </Menu>
+  //       </Box>
+  //     ) : (
+  //       <Flex
+  //         direction="column"
+  //         justifyContent="center"
+  //         alignItems="center"
+  //         alignContent="center"
+  //         color="textPrimary"
+  //         cursor="pointer"
+  //         onClick={() => {
+  //           ReactGA.event({
+  //             category: 'connect',
+  //             action: 'connect account',
+  //           });
+  //           onConnect();
+  //         }}
+  //       >
+  //         <Text fontSize="12px">{t('connect')}</Text>
+  //       </Flex>
+  //     )}
+  //   </Box>
+  // );
 }
